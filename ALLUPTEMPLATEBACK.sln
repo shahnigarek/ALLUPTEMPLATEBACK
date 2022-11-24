@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32929.386
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ALLUPTEMPLATEBACK", "ALLUPTEMPLATEBACK\ALLUPTEMPLATEBACK.csproj", "{8C797392-678F-481B-A654-A26619D0DD2E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8C797392-678F-481B-A654-A26619D0DD2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C797392-678F-481B-A654-A26619D0DD2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C797392-678F-481B-A654-A26619D0DD2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C797392-678F-481B-A654-A26619D0DD2E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C15799F1-3FBD-4B53-8025-3B5410561E48}
+	EndGlobalSection
+EndGlobal
