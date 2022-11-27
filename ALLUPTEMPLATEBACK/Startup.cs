@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace ALLUPTEMPLATEBACK
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddNewtonsoftJson(options=>options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
             services.AddDbContext<AppDbContext>(options =>
             {
@@ -35,6 +36,7 @@ namespace ALLUPTEMPLATEBACK
             }
            );
             services.AddScoped<ILayoutServices,LayoutServices>();
+            services.AddSession();
 
         }
 
@@ -48,6 +50,7 @@ namespace ALLUPTEMPLATEBACK
 
             app.UseRouting();
             app.UseStaticFiles();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

@@ -9,5 +9,6 @@ namespace ALLUPTEMPLATEBACK.Interfaces
      public interface ILayoutServices
     {
         Task<Dictionary<string, string>> GetSettingsAsync();
+        Task<IEnumerable<Category>> GetCategoriesAsync();
     }
 }
