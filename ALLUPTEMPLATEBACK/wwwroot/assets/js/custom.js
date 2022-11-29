@@ -2,8 +2,9 @@
     $(".addtobasket").click(function (e) {
         e.preventDefault();
 
-        let url = $(this).attr("href")
-            .fetch(url)
+        let url = $(this).attr('href');
+
+            fetch(url)
             .then(res => {
                 alert("Added");
             })
@@ -48,15 +49,18 @@
     $(".searchBtn").click(() => {
         let searchInput = $(".searchInput").val();
         let searchCategory = $(".searchCategory option:selected").val();
+        console.log(searchInput)
+        console.log(searchCategory)
 
         if (searchInput.length > 0) {
 
             fetch('/shop/search/' + searchCategory + '?search=' + searchInput)
                 .then(response => {
+                    console.log(response);
                     return response.text();
                 })
                 .then(data => {
-                    $("#searchList").html(liItems);
+                    $("#searchList").html(data);
                 })
 
 
