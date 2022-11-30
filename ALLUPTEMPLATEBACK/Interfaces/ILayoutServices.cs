@@ -1,4 +1,5 @@
 ﻿using ALLUPTEMPLATEBACK.Models;
+using ALLUPTEMPLATEBACK.ViewModels.Basket;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace ALLUPTEMPLATEBACK.Interfaces
     {
         Task<Dictionary<string, string>> GetSettingsAsync();
         Task<IEnumerable<Category>> GetCategoriesAsync();
+        Task<IEnumerable<BasketVM>> GetBasketAsync();
     }
 }

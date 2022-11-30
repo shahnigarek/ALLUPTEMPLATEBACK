@@ -35,6 +35,7 @@ namespace ALLUPTEMPLATEBACK
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             }
            );
+            services.AddHttpContextAccessor();
             services.AddScoped<ILayoutServices,LayoutServices>();
             services.AddSession();
 
