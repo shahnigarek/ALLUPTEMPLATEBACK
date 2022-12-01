@@ -22,8 +22,8 @@ namespace ALLUPTEMPLATEBACK.ViewComponents
         {
             ProductVM productVM = new ProductVM
             {
-                NewArrivals = await _context.Products.Where(c => c.IsDeleted == false && c.IsNewArrival).ToListAsync(),
-                BestSellers = await _context.Products.Where(c => c.IsDeleted == false && c.IsBestSeller).ToListAsync(),
+                NewArrival = await _context.Products.Where(c => c.IsDeleted == false && c.IsNewArrival).ToListAsync(),
+                BestSeller = await _context.Products.Where(c => c.IsDeleted == false && c.IsBestSeller).ToListAsync(),
                 Featured = await _context.Products.Where(c => c.IsDeleted == false && c.IsFeatured).ToListAsync()
             };
 
