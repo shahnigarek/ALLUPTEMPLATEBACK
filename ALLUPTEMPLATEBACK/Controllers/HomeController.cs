@@ -22,27 +22,27 @@ namespace ALLUPTEMPLATEBACK.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            HomeVM homeVM = new HomeVM
-            {
-                Sliders = await _context.Sliders.Where(s => s.IsDeleted == false).ToListAsync(),
-                Categories = await _context.Categories.Where(c => c.IsDeleted == false && c.IsMain).ToListAsync(),
-                NewArrival = await _context.Products.Where(p => p.IsDeleted == false && p.IsNewArrival).ToListAsync(),
-                BestSeller = await _context.Products.Where(p => p.IsDeleted == false && p.IsBestSeller).ToListAsync(),
-                Featured = await _context.Products.Where(p => p.IsDeleted == false && p.IsFeatured).ToListAsync()
-            };
+            //HomeVM homeVM = new HomeVM
+            //{
+            //    //Sliders = await _context.Sliders.Where(s => s.IsDeleted == false).ToListAsync(),
+            //    //Categories = await _context.Categories.Where(c => c.IsDeleted == false && c.IsMain).ToListAsync(),
+            //    NewArrival = await _context.Products.Where(p => p.IsDeleted == false && p.IsNewArrival).ToListAsync(),
+            //    BestSeller = await _context.Products.Where(p => p.IsDeleted == false && p.IsBestSeller).ToListAsync(),
+            //    Featured = await _context.Products.Where(p => p.IsDeleted == false && p.IsFeatured).ToListAsync()
+            //};
 
-            return View(homeVM);
+            return View(/*homeVM*/);
         }
-        public async Task<IActionResult> Setcookie()
-        {
-            HttpContext.Response.Cookies.Append("P228", "MyFirstCookie");
+        //public async Task<IActionResult> Setcookie()
+        //{
+        //    HttpContext.Response.Cookies.Append("P228", "MyFirstCookie");
 
-            return RedirectToAction(nameof(Index));
-        }
-        public async Task<IActionResult> Getcookie()
-        {
-            return Content(HttpContext.Request.Cookies["P228"]);
-        }
+        //    return RedirectToAction(nameof(Index));
+        //}
+        //public async Task<IActionResult> Getcookie()
+        //{
+        //    return Content(HttpContext.Request.Cookies["P228"]);
+        //}
 
         //public async Task<IActionResult> SetSession()
         //{

@@ -52,20 +52,21 @@ namespace ALLUPTEMPLATEBACK.Controllers
                     return BadRequest("Basket is empty");
                 }
             }
-           
+            
 
-            //basket = JsonConvert.SerializeObject(products);
-            //HttpContext.Response.Cookies.Append("basket", basket);
 
-            //foreach (BasketVM basketVM in products)
-            //{
-            //    Product product = await _context.Products.FirstOrDefaultAsync(p => p.Id == basketVM.Id && p.IsDeleted == false);
+            basket = JsonConvert.SerializeObject(products);
+            HttpContext.Response.Cookies.Append("basket", basket);
 
-            //    basketVM.Title = product.Title;
-            //    basketVM.Price = product.DiscountedPrice > 0 ? product.DiscountedPrice : product.Price;
-            //    basketVM.Image = product.MainImage;
-            //    basketVM.ExTax = product.ExTax;
-            //}
+            foreach (BasketVM basketVM in products)
+            {
+                Product product = await _context.Products.FirstOrDefaultAsync(p => p.Id == basketVM.Id && p.IsDeleted == false);
+
+                basketVM.Title = product.Title;
+                basketVM.Price = product.DiscountedPrice > 0 ? product.DiscountedPrice : product.Price;
+                basketVM.Image = product.MainImage;
+                basketVM.ExTax = product.ExTax;
+            }
             return PartialView("_BasketCartPartial", products);
 
         }
