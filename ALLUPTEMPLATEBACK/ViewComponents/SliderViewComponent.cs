@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace ALLUPTEMPLATEBACK.ViewComponents
 {
-    public class SliderViewComponents : ViewComponent
+    public class SliderViewComponent : ViewComponent
     {
         private readonly AppDbContext _context;
 
-        public SliderViewComponents(AppDbContext context )
+        public SliderViewComponent(AppDbContext context )
         {
             _context = context;
         }

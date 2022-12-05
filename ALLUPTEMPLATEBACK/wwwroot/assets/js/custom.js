@@ -1,18 +1,6 @@
 ﻿$(document).ready(() => {
 
-    $(".product-close").click(function (e) {
-        e.preventDefault();
-
-        let url = $(this).attr('href');
-
-        fetch(url)
-            .then(res => {
-                return res.text();
-            })
-            .then(data => {
-                $(".header-cart").html(data);
-            })
-    })
+    
         $(".addtobasket").click(function (e) {
             e.preventDefault();
 
@@ -27,6 +15,21 @@
                 })
 
         })
+
+    $(document).on("click", ".product-close", function (e) {
+        e.preventDefault();
+
+        let url = $(this).attr('href');
+
+        fetch(url)
+            .then(res => {
+                return res.text();
+            })
+            .then(data => {
+                $(".header-cart").html(data);
+            })
+    })
+
         $(".productModalBtn").click(function (e) {
             e.preventDefault();
 
