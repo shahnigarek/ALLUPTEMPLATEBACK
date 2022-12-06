@@ -41,9 +41,9 @@
                     <td>@(product.ProductTags != null && product.ProductTags.Count() > 0 ? String.Join(",", product.ProductTags.Select(x => x.Tag.Name)) : "")</td>
                     <td>@product.CreatedAt?.ToString("dd / MM / yyyy")</td>
                     <td>
-                        <a class="btn btn-warning" asp-area="manage" asp-controller="category" asp-action="update" asp-route-id="@product.Id">Update</a>
-                        <a class="btn btn-danger" asp-area="manage" asp-controller="category" asp-action="delete" asp-route-id="@product.Id">Delete</a>
-                        <a class="btn btn-primary" asp-area="manage" asp-controller="category" asp-action="detail" asp-route-id="@product.Id">Detail</a>
+                        <a class="btn btn-warning" asp-area="manage" asp-controller="product" asp-action="update" asp-route-id="@product.Id">Update</a>
+                        <a class="btn btn-danger" asp-area="manage" asp-controller="product" asp-action="delete" asp-route-id="@product.Id">Delete</a>
+                        <a class="btn btn-primary" asp-area="manage" asp-controller="product" asp-action="detail" asp-route-id="@product.Id">Detail</a>
                     </td>
 
                 </tr>
