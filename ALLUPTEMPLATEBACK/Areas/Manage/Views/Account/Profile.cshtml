@@ -1,0 +1,50 @@
+﻿@model ProfileVM
+
+@{
+    ViewData["Title"] = "Profile";
+
+}
+
+<h1>Profile</h1>
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name">Name </label>
+                <input asp-for="Name" class="form-control" placeholder="Name">
+                <span asp-validation-for="Name" class="text text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserName">UserName </label>
+                <input asp-for="UserName" class="form-control" placeholder="UserName">
+                <span asp-validation-for="UserName" class="text text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email">Email </label>
+                <input asp-for="Email" class="form-control" placeholder="Email">
+                <span asp-validation-for="Email" class="text text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CurrentPassword">CurrentPassword </label>
+                <input asp-for="CurrentPassword" class="form-control" placeholder="CurrentPassword">
+                <span asp-validation-for="CurrentPassword" class="text text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password">Email </label>
+                <input asp-for="Password" class="form-control" placeholder="Password">
+                <span asp-validation-for="Password" class="text text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassword">Email </label>
+                <input asp-for="ConfirmPassword" class="form-control" placeholder="ConfirmPassword">
+                <span asp-validation-for="ConfirmPassword" class="text text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+    </div>
+</div>
+
+@section script{
+    @await Html.PartialAsync("_ValidationPartial")
+}

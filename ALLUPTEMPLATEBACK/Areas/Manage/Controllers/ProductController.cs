@@ -82,7 +82,7 @@ namespace ALLUPTEMPLATEBACK.Areas.Manage.Controllers
                     ModelState.AddModelError("TagIds", "Tag can be choosen only one time");
                     return View(product);
                 }
-                if (!await _context.Tags.AnyAsync(c => c.IsDeleted == false && c.Id == tagId))
+                if (!await _context.Tags.AnyAsync(c => c.IsDeleted == false && c.Id == tagId)) 
                 {
                     ModelState.AddModelError("TagIds", "Choosen Tag is wrong ");
                     return View(product);
@@ -142,6 +142,38 @@ namespace ALLUPTEMPLATEBACK.Areas.Manage.Controllers
             {
                 return View(product);
             }
+
+            Product existedproduct = await _context.Products.Include(p => p.ProductTags).FirstOrDefaultAsync(p => p.IsDeleted == false && p.Id== id );
+
+            _context.ProductTags.RemoveRange();
+
+            List<ProductTag> productTags = new List<ProductTag>();
+            foreach (int tagId in product.TagIds)
+            {
+                if (product.TagIds.Where(t => t == tagId).Count() > 1)
+                {
+                    ModelState.AddModelError("TagIds", "Tag can be choosen only one time");
+                    return View(product);
+                }
+                if (!await _context.Tags.AnyAsync(c => c.IsDeleted == false && c.Id == tagId))
+                {
+                    ModelState.AddModelError("TagIds", "Choosen Tag is wrong ");
+                    return View(product);
+                }
+                ProductTag productTag = new ProductTag
+                {
+                    CreatedAt = DateTime.UtcNow.AddHours(+4),
+                    CreatedBy = "System",
+                    IsDeleted = false,
+                    TagId = tagId
+                };
+
+                productTags.Add(productTag);
+            }
+
+            existedproduct.ProductTags = productTags;
+
+            await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");
         }

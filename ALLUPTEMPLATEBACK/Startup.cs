@@ -1,9 +1,11 @@
 using ALLUPTEMPLATEBACK.DAL;
 using ALLUPTEMPLATEBACK.Interfaces;
+using ALLUPTEMPLATEBACK.Models;
 using ALLUPTEMPLATEBACK.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,9 +37,29 @@ namespace ALLUPTEMPLATEBACK
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             }
            );
+
+            services.AddScoped<ILayoutServices, LayoutServices>();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+            });
+
+
             services.AddHttpContextAccessor();
-            services.AddScoped<ILayoutServices,LayoutServices>();
-            services.AddSession();
+            services.AddIdentity<AppUser, IdentityRole>(options =>
+             {
+                 options.Password.RequiredLength = 8;
+                 options.Password.RequireLowercase = true;
+                 options.Password.RequireUppercase = true;
+                 options.Password.RequireNonAlphanumeric = false;
+                 options.Password.RequireDigit = true;
+                 options.Lockout.AllowedForNewUsers = true;
+                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromSeconds(10);
+                 options.Lockout.MaxFailedAccessAttempts = 5;
+                 options.User.RequireUniqueEmail = true;
+
+             }).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
 
         }
 
@@ -52,6 +74,8 @@ namespace ALLUPTEMPLATEBACK
             app.UseRouting();
             app.UseStaticFiles();
             app.UseSession();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
